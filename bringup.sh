@@ -75,7 +75,8 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
 fi
 
 echo "-> linking dot files"
-sudo chown -R $username:$username $dotfiles_dir
+dotfiles_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+sudo chown -R $USER:$USER $dotfiles_dir
 for i in .tmux.conf .zshrc; do
     ln -sfT $dotfiles_dir/$i $HOME/$i
 done

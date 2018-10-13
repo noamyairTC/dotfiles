@@ -1,5 +1,5 @@
 ## Path to your oh-my-zsh installation.
-export ZSH="/home/omeryair/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 ## Set theme
 ZSH_THEME="mytheme"
@@ -23,9 +23,6 @@ plugins=(
 
 ## Source Oh My Zsh
 source $ZSH/oh-my-zsh.sh
-
-## Source .bashrc_addon
-source $HOME/.bashrc_addon
 
 ## Set LANG
 export LANG=en_US.UTF-8
