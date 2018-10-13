@@ -1,16 +1,22 @@
+## This is a script from installing ubuntu 16.04 from scratch in order to run Detectron (Facebook's implementation for Mask-RCNN).
+## This script is not (!) meant to run automatically, but to give the general steps (some of the wget comments won't even work since they require first logging in the Nvidia website).
+## ==========================================================================================================
+
 set -e
 
 ## Install dotfiles
 ## ================
+cd ~
 git clone https://github.com/noamyairTC/dotfiles.git
 cd dotfiles/
-./bringup.sh
-echo "Done installing dotfiles." 
+./install_detectron_on_clean_ubuntu_ec2.sh
+echo "Done installing dotfiles."
 
 ## Move to setup folder
 ## ====================
-# mkdir setup
-# cd setup
+cd ~
+mkdir setup
+cd setup
 
 ## Install Nvidia drivers
 ## ======================
@@ -89,7 +95,7 @@ pip3 install --user \
     protobuf
 sudo apt-get install -y --no-install-recommends libgflags-dev
 
-## Install torch
+## Install caffe2 / torch
 git clone https://github.com/pytorch/pytorch.git && cd pytorch
 git submodule update --init --recursive
 sudo python3 setup.py install
