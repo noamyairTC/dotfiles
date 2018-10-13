@@ -11,7 +11,7 @@ set -e
 cd ~
 git clone https://github.com/noamyairTC/dotfiles.git
 cd dotfiles/
-./install_detectron_on_clean_ubuntu_ec2.sh
+./bringup.sh
 echo "Done installing dotfiles."
 
 ## Move to setup folder
