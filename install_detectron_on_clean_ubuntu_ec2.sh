@@ -21,15 +21,16 @@ mkdir setup
 cd setup
 
 ## Install Nvidia drivers
-## ======================
-## Note: the wget might not work and you will need to download the file from Nvidia website.
+## =======================
+## Note 1: This might not be necessary since installing CUDA drivers, which happens next may also install the Nvidia drivers.
+## Note 2: the wget might not work and you will need to download the file from Nvidia website.
 wget http://us.download.nvidia.com/tesla/384.145/NVIDIA-Linux-x86_64-384.145.run
 sudo sh ./NVIDIA-Linux-x86_64-384.145.run
 echo "Done installing Nvidia drivers."
 
 ## Installing CUDA drivers
 ## =======================
-## Note: the wget commends might not work and you will need to download the file from Nvidia website.
+## Note: the wget commends might not work and you will need to download the file from Nvidia website (https://developer.nvidia.com/cuda-90-download-archive?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1604&target_type=runfilelocal).
 wget https://developer.nvidia.com/compute/cuda/9.0/Prod/local_installers/cuda_9.0.176_384.81_linux-run
 sudo sh cuda_9.0.176_384.81_linux.run
 
@@ -65,6 +66,7 @@ echo "/usr/bin/nvidia-persistenced --verbose" >> ~/.zshrc
 ## installing CUDNN drivers
 ## ========================
 ## Replace the wget link below with the link retrieved from https://developer.nvidia.com/rdp/cudnn-download under version 7.1.2 for cuda 9.0
+## (If the link below is not working then use: https://developer.nvidia.com/rdp/cudnn-download)
 wget https://developer.download.nvidia.com/compute/machine-learning/cudnn/secure/v7.1.2/prod/9.0_20180316/cudnn-9.0-linux-ppc64le-v7.1.tgz?H_JJWAnqOSOwDJIhgmMXYZEDW0E7mCKdJBnvmhIyKtRKHfjo7rrg18Y0hAr_oKvNR3w9I7HSHOk-AhzALwMQN_D0c0ENjA-TmIPmnhpYYLyNrA_ILNQZng9-Ll70L_n4_7chMnwgMueY2Qe-Q5cyxVBCyiUc9rsKrjlSgUQurYfMqdud8Y89zB4_gx7PKFipccF1ccGH_kCqbPOu3AU
     -O cudnn-9.0-linux-ppc64le-v7.1.tgz
 tar -xzvf cudnn-9.0-linux-ppc64le-v7.1.tgz
@@ -74,6 +76,7 @@ sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
 echo "Done installing cuDNN drivers."
 
 ## Install Caffe2 dependencies (for Python3)
+## (a modification for the instructions in https://caffe2.ai/docs/getting-started.html?platform=ubuntu&configuration=compile for Python3)
 sudo apt-get update
 sudo apt-get install -y --no-install-recommends \
     build-essential \
