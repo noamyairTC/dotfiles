@@ -1,5 +1,7 @@
-## This is a script from installing ubuntu 16.04 from scratch in order to run Detectron (Facebook's implementation for Mask-RCNN).
-## This script is not (!) meant to run automatically, but to give the general steps (some of the wget comments won't even work since they require first logging in the Nvidia website).
+## This is a script for installing ubuntu 16.04 from scratch in order to run Detectron
+## (Detectron is Facebook's implementation for Mask-RCNN).
+## This script is not (!) meant to run automatically, but to give the general steps
+## (some of the wget comments won't even work since they require first logging in the Nvidia website).
 ## ==========================================================================================================
 
 set -e
@@ -20,12 +22,14 @@ cd setup
 
 ## Install Nvidia drivers
 ## ======================
+## Note: the wget might not work and you will need to download the file from Nvidia website.
 wget http://us.download.nvidia.com/tesla/384.145/NVIDIA-Linux-x86_64-384.145.run
 sudo sh ./NVIDIA-Linux-x86_64-384.145.run
 echo "Done installing Nvidia drivers."
 
 ## Installing CUDA drivers
 ## =======================
+## Note: the wget commends might not work and you will need to download the file from Nvidia website.
 wget https://developer.nvidia.com/compute/cuda/9.0/Prod/local_installers/cuda_9.0.176_384.81_linux-run
 sudo sh cuda_9.0.176_384.81_linux.run
 
@@ -60,7 +64,7 @@ echo "/usr/bin/nvidia-persistenced --verbose" >> ~/.zshrc
 
 ## installing CUDNN drivers
 ## ========================
-## Replace the link below with the link retrieved from https://developer.nvidia.com/rdp/cudnn-download under version 7.1.2 for cuda 9.0
+## Replace the wget link below with the link retrieved from https://developer.nvidia.com/rdp/cudnn-download under version 7.1.2 for cuda 9.0
 wget https://developer.download.nvidia.com/compute/machine-learning/cudnn/secure/v7.1.2/prod/9.0_20180316/cudnn-9.0-linux-ppc64le-v7.1.tgz?H_JJWAnqOSOwDJIhgmMXYZEDW0E7mCKdJBnvmhIyKtRKHfjo7rrg18Y0hAr_oKvNR3w9I7HSHOk-AhzALwMQN_D0c0ENjA-TmIPmnhpYYLyNrA_ILNQZng9-Ll70L_n4_7chMnwgMueY2Qe-Q5cyxVBCyiUc9rsKrjlSgUQurYfMqdud8Y89zB4_gx7PKFipccF1ccGH_kCqbPOu3AU
     -O cudnn-9.0-linux-ppc64le-v7.1.tgz
 tar -xzvf cudnn-9.0-linux-ppc64le-v7.1.tgz
@@ -69,7 +73,7 @@ sudo cp cuda/targets/ppc64le-linux/lib/libcudnn* /usr/local/cuda/lib64
 sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
 echo "Done installing cuDNN drivers."
 
-## Install Caffe dependencies
+## Install Caffe2 dependencies (for Python3)
 sudo apt-get update
 sudo apt-get install -y --no-install-recommends \
     build-essential \
